@@ -1,0 +1,81 @@
+调用
+  statusCode 代码解释
+         200 成功
+         500 失败
+         501 用户取消
+   cb 为Javascript回调函数名，函数定义应为   void jsCallback(  caller   , response ）
+
+  API 调起登录接口，登录成功通过cb回调javascript
+    zd://login/v1/{cb:'javascript funcation name'}
+    cb                   Javascript函数名，用于App传递返回数据。
+    返回值
+    {
+       statusCode: 200，             // 200 成功 ，500 登录失败， 501 用户取消
+       response：
+       {
+           token: '' ,
+           nickName:'',
+         isVip: true,             // true or false
+       } 
+    }
+
+  获取Native手机的相关信息。
+    zd://getSysInfo/v1/{cb:'javascript funcation name'}
+    cb                   Javascript函数名，用于App传递返回数据。
+    返回值：
+    {
+        statusCode: 200,            //200 成功， 500 失败
+        response：
+        {
+            userInfo :
+            {
+         
+            } ,
+            deviceInfo: 
+            {
+               appVersion:'',
+               phoneVersion:'',
+               phoneModel:'',
+               channel:'',
+               IMEI:'',
+               ...
+           }
+     }
+  
+}
+
+  跳转到详情页面
+    contentType  为内容的类型，例如精品课，小课，专栏等等。
+    contentId       为内容的Id
+    extra               为额外需要传给Native的参数，可根据内容类型不一样而不同，需要App解析  
+    zd://open/class/detail/v1/{contentType:'', contentId: '',  extra: {}}
+
+  调转到App某个页面，例如Vip页面
+    viewName      跳转页面的名字
+    extra               为额外需要传给Native的参数，可根据viewName不一样而不同，需要App解析  
+    zd://open/view/v1/{viewName:'', extra:{}}
+    例如：
+         跳转到Vip页面 ， viewName 为 vipTab
+         跳转到Vip详情页 ， viewName 为vipDetail
+
+  播放某个音频
+    contentType  为内容的类型，例如精品课，小课，专栏等等。
+    contentId       为内容的Id
+    extra               为额外需要传给Native的参数，可根据内容类型不一样而不同，需要App解析  
+    zd://play/v1/{contentType:'', contentId:'', extra:{}}
+
+
+  调转到支付页面 
+    contentType  为内容的类型，例如精品课，小课，专栏等等。
+    contentId       为内容的Id
+    extra               为额外需要传给App的参数，可根据内容类型不一样而不同，需要App解析 
+    cb                   Javascript函数名，用于App传递返回数据。 
+    zd://pay/v1/{contentType:'', contentId:'', cb:'javascript funcation name' ， extra:{} }
+   返回值
+    {
+       statusCode: 200  ，              // 200 成功 ，500 支付失败， 501 用户取消
+       response：
+       {
+          
+       } 
+   }

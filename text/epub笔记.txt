@@ -1,0 +1,3 @@
+ <meta name="viewport" content="width=device-width, initial-scale=1.0,
+      maximum-scale=1.0,minimun-scale=1.0,user-scalable=no">
+加限制属性，不会误触 限制自动缩放功能

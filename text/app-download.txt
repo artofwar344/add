@@ -1,0 +1,18 @@
+http://zdimg.lifeweek.com.cn/pkg/android/zd_v6.0.0_toutiao01.apk
+http://zdimg.lifeweek.com.cn/pkg/android/zd_v6.0.0_toutiao02.apk
+http://zdimg.lifeweek.com.cn/pkg/android/zd_v6.0.0_toutiao03.apk
+http://zdimg.lifeweek.com.cn/pkg/android/zd_v6.0.0_toutiao04.apk
+http://zdimg.lifeweek.com.cn/pkg/android/zd_v6.0.0_toutiao05.apk
+
+http://zdimg.lifeweek.com.cn/pkg/android/zd_v6.0.0_zhihu01.apk
+http://zdimg.lifeweek.com.cn/pkg/android/zd_v6.0.0_zhihu02.apk
+http://zdimg.lifeweek.com.cn/pkg/android/zd_v6.0.0_zhihu03.apk
+http://zdimg.lifeweek.com.cn/pkg/android/zd_v6.0.0_zhihu04.apk
+http://zdimg.lifeweek.com.cn/pkg/android/zd_v6.0.0_zhihu05.apk
+
+
+http://zdmobile.lifeweek.com.cn/appload/index.html?source=toutiao01 
+https://171371960.github.io/addnewproject/appload/
+
+
+var isWeixin = ua.indexOf('micromessenger') != -1;// weixin检查

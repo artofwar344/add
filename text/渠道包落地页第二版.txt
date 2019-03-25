@@ -1,0 +1,31 @@
+﻿http://zdmobile.lifeweek.com.cn/appforzd/index.html?source=toutiao01
+  toutiao01.apk 
+
+http://zdmobile.lifeweek.com.cn/appforzd/index.html?source=toutiao02
+ toutiao02.apk 
+
+http://zdmobile.lifeweek.com.cn/appforzd/index.html?source=toutiao03
+ toutiao03.apk 
+
+http://zdmobile.lifeweek.com.cn/appforzd/index.html?source=toutiao04
+  toutiao04.apk 
+
+http://zdmobile.lifeweek.com.cn/appforzd/index.html?source=toutiao05
+ toutiao05.apk 
+
+http://zdmobile.lifeweek.com.cn/appforzd/index.html?source=zhihu01
+  zhihu01.apk 
+
+http://zdmobile.lifeweek.com.cn/appforzd/index.html?source=zhihu02
+ zhihu02.apk 
+
+http://zdmobile.lifeweek.com.cn/appforzd/index.html?source=zhihu03
+ zhihu03apk 
+
+http://zdmobile.lifeweek.com.cn/appforzd/index.html?source=zhihu04
+ zhihu04.apk 
+
+http://zdmobile.lifeweek.com.cn/appforzd/index.html?source=zhihu05
+  zhihu05.apk  
+
+source 默认下载，写错也是 common.apk // 6.1.0 版本

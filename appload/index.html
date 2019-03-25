@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport"
+		content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>中读 - 快慢之间有中读</title>
+	<link rel="stylesheet" type="text/css" href="css/mangguo.css" />
+</head>
+
+<body>
+	<article>
+		<section id="banners">
+			<div class="banner2"><img src="img/indexbj1.jpg" /></div>
+			<div class="banner2"><img src="img/indexbj2.jpg" /></div>
+		</section>
+		<footer id="fclick">
+			<div><span>立即下载领取新人红包</span> </div>
+		</footer>
+		<div id="fex">
+			<div id="xx"><span class="close"></span>
+				<img src="img/prompts.png" alt="" srcset="">
+			</div>
+		</div>
+	</article>
+</body>
+<script src="js/loghub-tracking.js"></script>
+<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script>
+	var sourceIp = returnCitySN["cip"];
+	sourceIp ? sourceIp : sourceIp = '0.0.0.0';
+	var sources = getParam('source') ? sources = getParam('source') : sources = '';
+	if (sources == "toutiao01") {
+		sources = 'ANDROID_toutiao_01'
+	} else if (sources == "toutiao02") {
+		sources = 'ANDROID_toutiao_02'
+	} else if (sources == "toutiao03") {
+		sources = 'ANDROID_toutiao_03'
+	} else if (sources == "toutiao04") {
+		sources = 'ANDROID_toutiao_04'
+	} else if (sources == "toutiao05") {
+		sources = 'ANDROID_toutiao_05'
+	} else if (sources == "zhihu01") {
+		sources = 'ANDROID_zhihu_01'
+	} else if (sources == "zhihu02") {
+		sources = 'ANDROID_zhihu_02'
+	} else if (sources == "zhihu03") {
+		sources = 'ANDROID_zhihu_03'
+	} else if (sources == 'zhihu04') {
+		sources = 'ANDROID_zhihu_04'
+	} else if (sources == "zhihu05") {
+		sources = 'ANDROID_zhihu_05'
+	}
+	var imgs = document.getElementById("banners");
+	imgs.addEventListener("click", function (e) {
+		e.preventDefault();
+	});
+	var loginfor = {}
+	var Weixin = false
+	var types = ''
+	// var froms = 'IOS';
+	var froms = '';
+	var isw = isWeiXin()
+
+	var doclick = document.getElementById("fclick")
+	var dofex = document.getElementById("fex")
+	dofex.onclick = function () {
+		dofex.style.display = 'none';
+	}
+	doclick.onclick = function () {
+		// froms == 'IOS' ? (
+		// 	types = 1,
+		// 	logIN(sources, types, sourceIp, froms),
+		// 	window.location.href = 'https://zdimg.lifeweek.com.cn/mobile/jumpIOS.html' : ''
+		// types = 2;
+		// logIN(sources, types, sourceIp, froms);
+		if (froms == "IOS") {
+			console.log('ios----');
+			types = 3
+			logIN(sources, types, sourceIp, froms)
+			window.location.href = 'https://zdimg.lifeweek.com.cn/mobile/jumpIOS.html'
+		} else if (isw == true) {
+			// alert(isw) 
+			dofex.style.display = 'block';
+		} else if (sources == "ANDROID_toutiao_01") {
+			console.log(froms);
+			types = 2 
+			logIN(sources, types, sourceIp, froms)
+			location.href = 'http://zdimg.lifeweek.com.cn/pkg/android/toutiao01.apk?fsname=zhongdu.apk&csr=1bbd'
+		} else if (sources == "ANDROID_toutiao_02") {
+			types = 2 
+			logIN(sources, types, sourceIp, froms)
+			location.href = 'http://zdimg.lifeweek.com.cn/pkg/android/toutiao02.apk?fsname=zhongdu.apk&csr=1bbd'
+		} else if (sources == "ANDROID_toutiao_03") {
+			types = 2
+			logIN(sources, types, sourceIp, froms)
+			location.href = 'http://zdimg.lifeweek.com.cn/pkg/android/toutiao03.apk?fsname=zhongdu.apk&csr=1bbd'
+		} else if (sources == "ANDROID_toutiao_04") {
+			types = 2
+			logIN(sources, types, sourceIp, froms)
+			location.href = 'http://zdimg.lifeweek.com.cn/pkg/android/toutiao04.apk?fsname=zhongdu.apk&csr=1bbd'
+		} else if (sources == "ANDROID_toutiao_05") {
+			types = 2
+			logIN(sources, types, sourceIp, froms)
+			location.href = 'http://zdimg.lifeweek.com.cn/pkg/android/toutiao05.apk?fsname=zhongdu.apk&csr=1bbd'
+		} else if (sources == "ANDROID_zhihu_01") {
+			types = 2
+			logIN(sources, types, sourceIp, froms)
+			location.href = 'http://zdimg.lifeweek.com.cn/pkg/android/zhihu01.apk?fsname=zhongdu.apk&csr=1bbd'
+		} else if (sources == "ANDROID_zhihu_02") {
+			types = 2
+			logIN(sources, types, sourceIp, froms)
+			location.href = 'http://zdimg.lifeweek.com.cn/pkg/android/zhihu02.apk?fsname=zhongdu.apk&csr=1bbd'
+		} else if (sources == "ANDROID_zhihu_03") {
+			types = 2
+			logIN(sources, types, sourceIp, froms)
+			location.href = 'http://zdimg.lifeweek.com.cn/pkg/android/zhihu03.apk?fsname=zhongdu.apk&csr=1bbd'
+		} else if (sources == 'ANDROID_zhihu_04') {
+			types = 2
+			logIN(sources, types, sourceIp, froms)
+			location.href = 'http://zdimg.lifeweek.com.cn/pkg/android/zhihu04.apk?fsname=zhongdu.apk&csr=1bbd'
+		} else if (sources == "ANDROID_zhihu_05") {
+			types = 2
+			logIN(sources, types, sourceIp, froms)
+			location.href = 'http://zdimg.lifeweek.com.cn/pkg/android/zhihu05.apk?fsname=zhongdu.apk&csr=1bbd'
+		} else {
+			types = 2
+			logIN(sources, types, sourceIp, froms)
+			location.href = 'http://zdimg.lifeweek.com.cn/pkg/android/common.apk'
+		}
+
+	}
+
+	function logIN(Isources, Itype, IsourceIp, Ifrom) {
+		pushlog()
+		var logger = new window.Tracker(loginfor['endpoint'], loginfor['project'], loginfor['logstore']);
+		var date = new Date().getTime() 
+		
+		logger.push('version', '1.0');
+		logger.push('phoneChannel', Ifrom); // 客户端
+		logger.push('source', Isources); //"渠道名"
+		logger.push('type', Itype); //"1-打开，2-下载" //
+		logger.push('sourceIp', IsourceIp); //"来源ip"
+		logger.push('createTime', date);
+		logger.push('phoneVersion', 'null'); //"手机型号"
+		logger.logger();
+	}
+
+	function pushlog() {
+		return loginfor = {
+			'endpoint': 'cn-beijing.log.aliyuncs.com',
+			'project': 'online-web-h5',
+			'logstore': 'web-h5-downapp'
+		}
+	}
+
+	function getReady() { //移动终端浏览器版本信息
+		var u = navigator.userAgent
+		// var app = navigator.appVersion
+		let trident = u.indexOf('Trident') > -1; //IE内核
+		let presto = u.indexOf('Presto') > -1; //opera内核
+		let webKit = u.indexOf('AppleWebKit') > -1; //苹果、谷歌内核
+		let gecko = u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1; //火狐内核
+		let iPhone = u.indexOf('iPhone') > -1; //是否为iPhone或者QQHD浏览器
+		let iPad = u.indexOf('iPad') > -1; //是否iPad
+		let webApp = u.indexOf('Safari') == -1; //是否web应该程序，没有头部与底部
+		let language = (navigator.browserLanguage || navigator.language).toLowerCase();
+		let mobile = !!u.match(/AppleWebKit.*Mobile.*/); //是否为移动终端
+		let ios = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端 
+		// let md = new MobileDetect(u);
+		let android = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或uc浏览器 
+		if (mobile == true) { //判断是否是移动设备打开 
+			//  let ua = navigator.userAgent.toLowerCase(); //获取判断用的对象
+			if (ios == true || iPhone == true || iPad == true) { //移动设备为IOS
+				console.log(" ios+");
+				return froms = "IOS"
+				// window.location.href = 'https://zdimg.lifeweek.com.cn/'
+				// window.location.href = 'https://itunes.apple.com/cn/app//id509436231?mt=8'   
+			} else if (android == true) { //移动设备为android 
+				console.log(" android +");
+				return froms = "安卓"
+			} else {
+				console.log("!android!ios +");
+				return froms = "!android!ios"
+			}
+		} else {
+			//否则就是PC浏览器打开
+			console.log("pc+");
+			return froms = "PC"
+		}
+	}
+
+	function getParam(paramName) {
+		paramValue = "", isFound = !1;
+		if (this.location.search.indexOf("?") == 0 && this.location.search.indexOf("=") > 1) {
+			arrSource = unescape(this.location.search).substring(1, this.location.search.length).split("&"), i = 0;
+			while (i < arrSource.length && !isFound) arrSource[i].indexOf("=") > 0 && arrSource[i].split("=")[0]
+				.toLowerCase() ==
+				paramName.toLowerCase() && (paramValue = arrSource[i].split("=")[1], isFound = !0), i++
+		}
+		return paramValue == "" && (paramValue = null), paramValue
+	}
+
+	function isWeiXin() {
+		var ua = window.navigator.userAgent.toLowerCase();
+		if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	window.onload = function () {
+		getReady()
+		types = 1
+		logIN(sources, types, sourceIp, froms)
+	}
+</script>
+
+</html>
