@@ -6,15 +6,16 @@
 	<meta name="viewport"
 		content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 	<title>中读 - 快慢之间有中读</title>
-	<link rel="stylesheet" type="text/css" href="css/mangguo.css" />
+	<link rel="stylesheet" type="text/css" href="https://zdmobile.lifeweek.com.cn/appload/css/mangguo.css" />
 </head>
 
 <body>
 	<article>
 		<section id="banners">
-			<div class="banner2"><img src="img/indexbj1.jpg" /></div>
-			<div class="banner2"><img src="img/indexbj2.jpg" /></div>
+			<div class="banner2"><img src="https://zdmobile.lifeweek.com.cn/appload/img/indexbj1.jpg" /></div>
+			<div class="banner2"><img src="https://zdmobile.lifeweek.com.cn/appload/img/indexbj2.jpg" /></div>
 			<!-- <div id="footcompony">
 				<p>三联生活传媒有限公司 </p>
 				<p>备案号：京ICP备18023565号-2  电话：010-84681030</p>
@@ -26,13 +27,13 @@
 		</footer>
 		<div id="fex">
 			<div id="xx"><span class="close"></span>
-				<img src="img/prompts.png" alt="" srcset=""> 
+				<img src="https://zdmobile.lifeweek.com.cn/appload/img/prompts.png" alt="" srcset=""> 
 			</div> 
 		</div>
 	</article>
 </body>
-<script src="js/loghub-tracking.js"></script>
-<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script src="https://zdmobile.lifeweek.com.cn/appload/js/loghub-tracking.js"></script>
+<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
 <script>
 	var sourceIp = returnCitySN["cip"];
 	sourceIp ? sourceIp : sourceIp = '0.0.0.0';
@@ -56,7 +57,9 @@
 	} else if (sources == 'zhihu04') {
 		sources = 'ANDROID_zhihu_04'
 	} else if (sources == "zhihu05") {
-		sources = 'ANDROID_zhihu_05'
+		sources = 'ANDROID_zhihu_05' 
+	} else if (sources == "youku02") {
+		sources = 'ANDROID_youku_02'
 	}
 	var imgs = document.getElementById("banners");
 	imgs.addEventListener("click", function (e) {
@@ -75,19 +78,13 @@
 		dofex.style.display = 'none';
 	}
 	doclick.onclick = function () {
-		// froms == 'IOS' ? (
-		// 	types = 1,
-		// 	logIN(sources, types, sourceIp, froms),
-		// 	window.location.href = 'https://zdimg.lifeweek.com.cn/mobile/jumpIOS.html' : ''
-		// types = 2;
-		// logIN(sources, types, sourceIp, froms);
 		if (froms == "IOS") {
 			console.log('ios----');
 			types = 3
 			logIN(sources, types, sourceIp, froms)
 			window.location.href = 'https://zdimg.lifeweek.com.cn/mobile/jumpIOS.html'
 		} else if (isw == true) {
-			// alert(isw) 
+		
 			dofex.style.display = 'block';
 		} else if (sources == "ANDROID_toutiao_01") {
 			console.log(froms);
@@ -130,6 +127,12 @@
 			types = 2
 			logIN(sources, types, sourceIp, froms)
 			location.href = 'http://zdimg.lifeweek.com.cn/pkg/android/zhihu05.apk?fsname=zhongdu.apk&csr=1bbd'
+ 
+		} else if (sources == "ANDROID_youku_02") {
+			types = 2
+			logIN(sources, types, sourceIp, froms)
+			
+			location.href = 'http://zdimg.lifeweek.com.cn/pkg/android/youku02.apk?fsname=zhongdu.apk&csr=1bbd'
 		} else {
 			types = 2
 			logIN(sources, types, sourceIp, froms)
@@ -176,6 +179,9 @@
 		let ios = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端 
 		// let md = new MobileDetect(u);
 		let android = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或uc浏览器 
+		setTimeout(function(){ 
+			isw?(	dofex.style.display = 'block'):''
+		},300)
 		if (mobile == true) { //判断是否是移动设备打开 
 			//  let ua = navigator.userAgent.toLowerCase(); //获取判断用的对象
 			if (ios == true || iPhone == true || iPad == true) { //移动设备为IOS
@@ -209,12 +215,8 @@
 	}
 
 	function isWeiXin() {
-		var ua = window.navigator.userAgent.toLowerCase();
-		if (ua.match(/MicroMessenger/i) == 'micromessenger') {
-			return true;
-		} else {
-			return false;
-		}
+		var ua = window.navigator.userAgent
+		return ua.indexOf( 'MicroMessenger') != -1 ? true : false; 
 	}
 	window.onload = function () {
 		getReady()
