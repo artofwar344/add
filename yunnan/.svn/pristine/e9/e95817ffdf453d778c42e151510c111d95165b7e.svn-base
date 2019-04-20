@@ -1,0 +1,184 @@
+.service {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.left {
+    width: 6.78rem;
+    background: #FFFFFF;
+    height: 1.6rem;
+    margin-bottom: 0.36rem;
+    font-size: .3rem;
+    color: #000000;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+
+    &:first-of-type{
+        margin-top:0.16rem;
+    }
+
+    img {
+        width: 0.4rem;
+        margin-right: 0.2rem;
+        display: inline-block;
+    }
+    p{
+        display: inline-block;
+        font-weight:bold;
+    }
+}
+
+.header{
+    height: 0.7rem;
+    font-size: 0.28rem;
+    color: #999999;
+    line-height: 0.7rem;
+    padding: 0 0.36rem;
+    text-align: left;
+    &.noMarginTop{
+        margin-top:-0.2rem;
+    }
+}
+.input_outside_box{
+    background-color: #fff;
+
+    &.littileMargin{
+        margin-top:0.16rem;
+    }
+    .input_box{
+        padding: 0;
+        margin:0 0.36rem;
+        border-bottom: 0.02rem solid #F1F3F6;
+        input{
+            width: 4rem;
+        }
+        input::placeholder{
+            color:#333;
+        }
+        &.vcode{
+            input{
+                float:none;
+                text-align: left;
+                margin-left: 0.3rem;
+            }
+            span{
+                float:right;
+                color: #2D7FFC;
+            }
+        }
+        
+    }
+}
+.hui-popupPrompt{
+    width: 5.86rem;
+
+   .popTitle{
+    font-size: 0.36rem;
+    color: #333333;
+    text-align: center;
+    margin:0.65rem 0 0.62rem;
+    font-weight:bold;
+   }
+   .popText{
+    font-size: 0.3rem;
+    color: #666666;
+    text-align: center;
+    margin-bottom: 0.4rem;
+   }
+}
+
+.details {
+    background: #FFF;
+    padding-bottom: 0.8rem;
+
+    .ListTitle {
+        height: 0.44rem;
+        /*margin-top: 0.38rem;*/
+        padding-top: .4rem;
+        margin-left: 0.4rem;
+        text-align: left;
+        font-family: PingFangSC-Regular;
+        font-size: 0.32rem;
+        color: #333333;
+        letter-spacing: 0.19px;
+        text-align: justify;
+        
+        h2{
+            font-weight:bold;
+        }
+    }
+    .listTwo1 {
+        text-align: left;
+        font-family: PingFangSC-Regular;
+        font-size: 14px;
+        color: #333333;
+        letter-spacing: 0.17px;
+        text-align: justify;
+        line-height: 24px;
+        margin-left: 0.4rem;
+        margin-top: 0.4rem;
+        margin-right: 0.4rem;
+    }
+    
+    .listTwo1 p {
+        margin-top: 0.1rem;
+    }
+    
+    
+}
+
+.reserveResult{
+    background-color: #fff;
+    padding: 0.2rem 0;
+
+    .undoTop {
+		display: flex;
+	}
+	
+	.undoTop p {
+        flex: 1;
+        text-align: left;
+		font-family: PingFangSC-Regular;
+		font-size: 0.28rem;
+		color: #333333;
+		line-height: 0.7rem;
+		margin-left: 0.36rem;
+	}
+	
+	.undoTop .rigth {
+		flex: 1;
+		font-family: PingFangSC-Regular;
+		font-size: 0.28rem;
+		color: #999999;
+		letter-spacing: 0.17px;
+		line-height: 0.7rem;
+		text-align: right;
+		margin-right: 0.36rem;
+		border: none;
+	}
+	.chargeBtn button {
+		width: 5.9rem;
+		height: 0.9rem;
+		background: #2D7FFC;
+		box-shadow: 0 5px 15px 0 rgba(45, 127, 252, 0.50);
+		border-radius: 25px;
+		border: none;
+		font-family: PingFangSC-Semibold;
+		font-size: 16px;
+		letter-spacing: 0.19px;
+		text-align: center;
+		margin-top: 1.02rem;
+	}
+	
+	.chargeBtn button a {
+		color: #FFFFFF;
+	}
+}
+
+
+
+

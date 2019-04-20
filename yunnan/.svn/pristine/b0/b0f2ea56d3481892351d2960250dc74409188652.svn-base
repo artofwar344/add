@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+		<title>ccb_app</title>
+    <!--dll提取出的第三方插件-->
+    <!-- <link type="text/css"  href="./static/utils/<%= htmlWebpackPlugin.options.libCssName %>"/> -->
+    <!-- <script src="./static/utils/<%= htmlWebpackPlugin.options.libJsName %>"></script> -->
+	</head>
+	<body>
+		<div id="app"></div>
+		<script type="text/javascript">
+			var urls = window.location;
+			function getUrlParam(urls,name){
+			    var pattern = new RegExp("[?&]" + name +"\=([^&]+)","g");
+			    var matcher = pattern.exec(urls);
+			    var items = null;
+			    if(matcher != null){
+			        try{
+			            items = decodeURIComponent(decodeURIComponent(matcher[1]));
+			        }catch(e){
+			            try{
+			                items = decodeURIComponent(matcher[1]);
+			            }catch(e){
+			                items = matcher[1];
+			            }
+			        }
+			    }
+			    return items;
+			}
+		// 调用方法
+			var username=getUrlParam(urls,"username");
+			var userid=getUrlParam(urls,"userid");
+			var cardid=getUrlParam(urls,"cardNo");
+			var usertoken=getUrlParam(urls,"token");
+			var userphone=getUrlParam(urls,"phone");
+			var matterid=getUrlParam(urls,"matterid");
+			var AreaNumber=getUrlParam(urls,"AreaNumber");
+			var EmployeeNumbers=getUrlParam(urls,"EmployeeNumbers");
+			var AppSerialNumber=getUrlParam(urls,"AppSerialNumber");
+			var DeviceNumber=getUrlParam(urls,"DeviceNumber");
+			var WorkId=getUrlParam(urls,"WorkId");
+			var userNation=getUrlParam(urls,"userNation");
+			var userAdress=getUrlParam(urls,"userAdress");
+			var userSex=getUrlParam(urls,"userSex");
+			var userBirthday=getUrlParam(urls,"userBirthday");
+			var companyName=getUrlParam(urls,"companyName");
+			var socialNumber=getUrlParam(urls,"socialNumber");
+			var CHNL_ID=getUrlParam(urls,"CHNL_ID");
+			var numYBJ = getUrlParam(urls, "healthInsuranceNumber");
+			var areaYBJ = getUrlParam(urls, "healthInsuranceArea");
+			window.sessionStorage.setItem("username",username);//用户姓名
+			window.sessionStorage.setItem("userid",userid);//手机App注册Id
+			window.sessionStorage.setItem("cardid",cardid);//用户身份证号码
+			window.sessionStorage.setItem("usertoken",usertoken);//手机用户登录状态
+			window.sessionStorage.setItem("userphone",userphone);//用户手机号码
+			window.sessionStorage.setItem("matterid",matterid);//查询或办事项Id
+			window.sessionStorage.setItem("AreaNumber",AreaNumber);//统筹区划代码
+			window.sessionStorage.setItem("EmployeeNumbers",EmployeeNumbers);//养老保险个人编号
+			window.sessionStorage.setItem("AppSerialNumber",AppSerialNumber);//序列号
+			window.sessionStorage.setItem("DeviceNumber",DeviceNumber);//机器号
+			window.sessionStorage.setItem("WorkId",WorkId);//workid
+			window.sessionStorage.setItem("userNation",userNation);//民族
+			window.sessionStorage.setItem("userAdress",userAdress);//地址
+			window.sessionStorage.setItem("userSex",userSex);//性别
+			window.sessionStorage.setItem("userBirthday",userBirthday);//生日
+			window.sessionStorage.setItem("companyName",companyName);//公司名
+			window.sessionStorage.setItem("socialNumber",socialNumber);//统一社会信用代码
+			window.sessionStorage.setItem("CHNL_ID",CHNL_ID)
+			window.sessionStorage.setItem("numYBJ", numYBJ)  // 个人医保编号
+			window.sessionStorage.setItem("areaYBJ", areaYBJ)  // 参保地区
+				//裕农通APP使用，请勿删除
+			if (CHNL_ID === 'CC03C004') {
+				var script = document.createElement("script");
+				script.type = "text/javascript";
+				script.src = "./static/js/ynt.min.js";
+				document.body.appendChild(script);
+			}
+		</script>
+	</body>
+	 <style>
+	 	html,body{
+			width: 100%;
+			height: 100%;
+			display: block;
+			/* overflow: hidden; */
+	 		background: #f1f3f6;
+	 	}
+	 	.hui-btn{
+	 		text-align: center !important;
+	 	}
+	 	input{    background: none !important;}
+		#app{
+			height: 100%;
+		}
+	 </style>
+
+</html>

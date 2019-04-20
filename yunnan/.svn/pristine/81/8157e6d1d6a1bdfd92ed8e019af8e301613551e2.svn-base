@@ -1,0 +1,19 @@
+.hui-field_core{
+	text-align: right;
+}
+.statisticalBtn button{
+	width: 5.5rem;
+	height: 0.9rem;
+	background: #2D7FFC;
+	box-shadow: 0 5px 15px 0 rgba(45,127,252,0.50);
+	border-radius: 25px;
+	margin-top: 1rem;
+	font-family: PingFangSC-Semibold;
+	font-size: .32rem;
+	letter-spacing: 0.19px;
+	text-align: center;
+	border: none;
+}
+.statisticalBtn button a{
+	color: #FFFFFF;
+}

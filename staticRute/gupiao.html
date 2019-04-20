@@ -1,0 +1,67 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title> Document</title>
+  <style media="screen">
+    html,    body,    div,    ul,    li,    h1,    h2,
+    h3,    h4,    h5,    h6,    p {
+      margin: 0;
+      padding: 0;
+    }
+    
+    .gidecenter {
+      padding: 12px;
+    }
+    .gidecenter p {
+      text-indent: 2rem;
+      margin: 14px auto;
+    }
+
+    .guizespan {
+      font-family: 'Arial Normal', 'Arial';
+      font-weight: 400;
+      line-height: 28px;
+    }
+
+    .guizelist {
+      margin-left: 20px;
+    } 
+    .guids { padding: 2px;display: block;}
+  </style>
+</head>
+
+<body class="view gidecenter" contenteditable="true" spellcheck="false" style="cursor: text;">
+  <button type="button" onclick="loadXMLDoc()">修改内容</button>
+</body>
+ <script>
+//  https://gupiao.baidu.com/api/rails/stockbasicbatch?from=pc&os_ver=1&cuid=xxx&vv=100&format=json&stock_code=sz300079
+function loadXMLDoc()
+{
+	var xmlhttp;
+	if (window.XMLHttpRequest)
+	{
+		//  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+		xmlhttp=new XMLHttpRequest();
+	}
+	else
+	{
+		// IE6, IE5 浏览器执行代码
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange=function()
+	{
+		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		{
+			document.writeln=xmlhttp.responseText;
+		}
+	}
+	xmlhttp.open("GET","https://gupiao.baidu.com/api/rails/stockbasicbatch?from=pc&os_ver=1&cuid=xxx&vv=100&format=json&stock_code=sz300079",true);
+	xmlhttp.send('Remote Address: 61.135.186.182:443');
+}
+ </script>
+
+</html>

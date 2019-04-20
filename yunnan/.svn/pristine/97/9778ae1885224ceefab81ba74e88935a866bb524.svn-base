@@ -1,0 +1,21 @@
+/**
+ * 通用rem自*
+ */
+(function(doc, win) {
+  var docEl = doc.documentElement,
+    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+    recalc = function() {
+      var clientWidth = docEl.clientWidth;
+      if (!clientWidth) return;
+      docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+      docEl.style.fontFamily = "微软雅黑";
+      var t=setTimeout(function() {
+        document.getElementsByTagName("body")[0].style.visibility="visible";
+        clearTimeout(t);
+      }, 200);
+    };
+  if (!doc.addEventListener) return;
+  win.addEventListener(resizeEvt, recalc, false);
+  doc.addEventListener('DOMContentLoaded', recalc, false);
+  win.onload=recalc();
+})(document, window);

@@ -1,0 +1,182 @@
+.settleTab{
+    display:flex;
+    background-color: #fff;
+    height:1rem;
+    margin-top: -0.2rem;
+    li{
+        width:33%;
+        font-size: 0.28rem;
+        position: relative;
+        a{
+            color: #999;
+            line-height: 1rem;
+        }
+        
+        &.activeTab{
+            a{
+                color: #257BFF;
+            }
+            &::after{
+                content: '';
+                width: 0.52rem;
+                position: absolute;
+                top: 0.9rem;
+                left: 50%;
+                height: 0.05rem;
+                background-color: #257BFF;
+                margin-left: -0.26rem;
+                box-shadow: 0 0.04rem 0.08rem 0 rgba(58,94,255,0.50);
+                border-radius: 0.2rem
+            }
+        }
+    }
+
+    &.big{
+        height: 1.68rem;
+        li{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            a{
+                line-height:normal;
+                width:2.02rem;
+            }
+            &.activeTab{
+                
+                &::after{
+                    top:1.58rem;
+                }
+            }
+                
+        }
+    }
+}
+
+.settleForm{
+    text-align: left;
+    .ht_box{
+        text-align: center;
+        margin-bottom: 0;
+    }
+
+    .header{
+        height: 0.7rem;
+        font-size: 0.24rem;
+        color: #999999;
+        line-height: 0.7rem;
+        padding: 0 0.36rem;
+    }
+
+   .input_outside_box{
+       background-color: #fff;
+
+       .input_box{
+           padding: 0;
+           margin:0 0.36rem;
+           border-bottom: 0.02rem solid #F1F3F6;
+
+           input::placeholder{
+               color:#333;
+           }
+       }
+   }
+
+   
+    .photo_out_box{
+        background: #fff;
+        padding: 0 0.36rem;
+
+        .photo_box{
+            border-bottom: 0.02rem solid #F1F3F6;
+            background: #fff;
+            padding: 0.4rem 0;
+
+            .headline{
+                font-size: 0.3rem;
+                color: #333333;
+                font-weight: bold;
+                margin-bottom: 0.52rem;
+            }
+
+            .addPhtoto{
+                display:inline-block;
+                background-image: url("../images/addPhoto@2x.png");
+                @media (-webkit-min-device-pixel-ratio:3),(min-device-pixel-ratio:3){
+                    background-image: url("../images/addPhoto@3x.png")
+                }
+                width:1.6rem;
+                height:1.6rem;
+                background-size: 1.6rem;
+            }
+            .photos{
+                box-sizing: border-box;
+                margin-right: 0.4rem;
+                display:inline-block;
+                width:1.6rem;
+                height: 1.6rem;
+                background: #F5F5F5;
+                border: 0.02rem solid #ECECEC;
+                border-radius: 0.04rem;
+            }
+        }
+        .hui-upload{
+            display: inline-block;
+        }
+    }
+
+    .buttonGroup{
+        display:flex;
+        justify-content: center;
+    }
+    .commonBtn{
+        width: 2.6rem;
+        height: 0.9rem;
+        margin-top: 0.68rem;
+
+        &.greenButton{
+            background: #08C173;
+            box-shadow: 0 0.1rem 0.3rem 0 rgba(8,193,115,0.52);
+            border-radius: 0.5rem;
+            margin-left:0.68rem;
+        }
+    }
+}
+
+.bigImg{
+    width: 3.94rem;
+    
+    margin: 1.48rem auto 0.7rem;
+
+    &.submitImg{
+        height:3.16rem;
+        background-size: 3.94rem 3.16rem;
+        background-image: url("../images/Group2@2x.png");
+        @media (-webkit-min-device-pixel-ratio:3),(min-device-pixel-ratio:3){
+            background-image: url("../images/Group2@3x.png")
+        }
+        
+    }
+
+    &.resultImg{
+        margin-top: 2.02rem;
+        height:2.62rem;
+        background-size: 3.94rem 2.62rem;
+        background-image: url("../images/Group@2x.png");
+        @media (-webkit-min-device-pixel-ratio:3),(min-device-pixel-ratio:3){
+            background-image: url("../images/Group@3x.png")
+        }
+        
+    }
+}
+
+.resultMsg{
+    font-size: 0.34rem;
+    color: #2D7FFC;
+    text-align: center;
+    font-weight:bold
+}
+
+.normalSize{
+    font-size: 0.28rem;
+    line-height: 1rem;
+}

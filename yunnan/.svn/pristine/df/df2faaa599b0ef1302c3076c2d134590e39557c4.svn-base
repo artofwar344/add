@@ -1,0 +1,101 @@
+.examAdmission{
+  background-color: #fff;
+  padding: 0.66rem 0.6rem 1.2rem;
+
+  ul{
+    width: 4.62rem;
+    margin: 0 auto 1.04rem;
+    font-size: 0.32rem;
+    text-align:left;
+
+    li{
+      position:relative;
+      height:0.68rem;
+    }
+
+
+    label{
+      color:#999;
+      display: inline-block;
+      width: 1.46rem;
+      margin-right:0.54rem;
+    }
+    span{
+      display: inline-block;
+      width: 2.62rem;
+    }
+  }
+  .schoolInfo{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    &>div{
+      box-sizing: border-box;
+      text-align: center;
+      background-color: #F8F8F8;
+      width: 1.9rem;
+      height:2rem;
+      border: 0.02rem solid #ECECEC;
+      border-radius: 0.08rem;
+      padding: 0.34rem 0.34rem 0.32rem 0.36rem;
+
+      &>p:first-of-type{
+        font-size:0.24rem;
+        color:#999999;
+        margin-bottom: 0.2rem;
+      }
+      &>p:last-of-type{
+        font-size: 0.28rem;
+        color: #2D7FFC;
+        font-weight: bold;
+      }
+    }
+
+    &.englishListen{
+      justify-content: center;
+      &>div:first-of-type{
+        margin-right:0.3rem;
+      }
+    }
+  }
+
+  .graduateExam{
+    box-sizing: border-box;
+    width: 6.32rem;
+    background: #F8F8F8;
+    border: 0.02rem solid #ECECEC;
+    padding: 0.26rem 0.56rem 0.3rem;
+    margin: 0 auto -0.48rem;
+
+    ul{
+      width:100%;
+      margin-bottom:0;
+    }
+    li{
+      font-size:0.28rem;
+    }
+
+    label{
+      color:#333;
+      width: auto;
+      float:left;
+    }
+    span{
+      color:#2D7FFC;
+
+      width: auto;
+      //text-align: right;
+      float:right;
+    }
+
+    .strong {
+      font-size: 0.36rem;
+      font-weight: bold;
+
+    }
+  }
+}
+
+
+

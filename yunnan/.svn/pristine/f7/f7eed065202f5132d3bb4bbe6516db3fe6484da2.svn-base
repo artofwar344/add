@@ -1,0 +1,49 @@
+.taxTwo .taxTwoTop{
+	width: 100%;
+}
+.taxTwo .taxBox{
+	width: 100%;
+  padding: .2rem 0;
+	/*height: 0.8rem;*/
+	background: #FFFFFF;
+	display: flex;
+	text-align: left;
+	border-bottom: 1px solid #E1E2E6;
+}
+.taxTwo .taxBox h1{
+	flex: 1;
+	font-family: PingFangSC-Regular;
+	font-size: .28rem;
+	color: #999999;
+	letter-spacing: 0.17px;
+	margin-left: 0.36rem;
+	/*line-height: 35px;*/
+}
+.taxTwo .taxBox p{
+  width: 60%;
+	font-family: PingFangSC-Regular;
+	font-size: .28rem;
+	color: #333333;
+	letter-spacing: 0.17px;
+	text-align: right;
+	margin-right: 0.36rem;
+	/*line-height: 35px;*/
+}
+
+.taxTwo .statisticalBtn button{
+	width: 5.5rem;
+	height: 0.9rem;
+	background: #2D7FFC;
+	box-shadow: 0 5px 15px 0 rgba(45,127,252,0.50);
+	border-radius: 25px;
+	margin-top: 1rem;
+	font-family: PingFangSC-Semibold;
+	font-size: .32rem;
+	letter-spacing: 0.19px;
+	text-align: center;
+	border: none;
+}
+.taxTwo .statisticalBtn button a{
+	color: #FFFFFF;
+}
+

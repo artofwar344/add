@@ -1,0 +1,192 @@
+.Top {
+    width: 100%;
+}
+
+.TitleTo {
+    width: 100%;
+    height: 0.72rem;
+    background: #f1f3f6;
+}
+
+.TitleTo h1 {
+    font-family: PingFangSC-Regular;
+    font-size: 0.28rem;
+    color: #999999;
+    letter-spacing: 0.17px;
+    text-align: justify;
+    line-height: 0.72rem;
+    margin-left: 0.18rem;
+}
+
+.example-formgroup_btn-wrapper {
+    margin-top: 20px;
+}
+
+.field-append_text,
+.field-prepend_text {
+    background: #f0f0f0;
+    padding: 8px;
+    color: #ccc;
+}
+
+.field-append_text .hui-icon {
+    line-height: normal;
+    vertical-align: middle;
+}
+
+.example-formgroup .hui-form_title-top .example-formgroup_btn-wrapper {
+    padding: 0 15px;
+}
+
+/* .hui-field {
+    height: 0.98rem;
+    line-height: 0.98rem;
+} */
+
+.hui-field_core {
+    text-align: right;
+}
+
+.hui-field_title {
+    font-family: PingFangSC-Regular;
+    font-size: 0.3rem;
+    color: #333333;
+    letter-spacing: 0.17px;
+}
+
+.example {
+    margin-top: 1rem;
+}
+
+.example button {
+    width: 5.90rem;
+    height: 0.9rem;
+    background: #2D7FFC;
+    box-shadow: 0 5px 15px 0 rgba(45, 127, 252, 0.50);
+    border-radius: 25px;
+    border: none;
+    font-size: 0.31rem;
+    color:#fff;
+    letter-spacing: 0.19px;
+    text-align: center;
+}
+
+
+.navTitle{
+    width: 100%;
+    height: 0.47rem;
+    /*background: #FFFFFF;*/
+    position: relative;
+}
+.navTitle div {
+    width: 0.09rem;
+    height: 0.24rem;
+    background: #2D7FFC;
+    display: flex;
+    position: absolute;
+    left: 0.18rem;
+    top: 0.1rem;
+}
+.navTitle h1{
+    text-align: left;
+    margin-left: 0.4rem;
+    font-size: 0.28rem;
+
+}
+.navTitle h2{
+    text-align: left;
+    min-width:0.68rem;
+    height: 0.32rem;
+    background: #FA6366;
+    padding: 0 .1rem;
+    border-radius: 100px;
+    font-family: PingFangSC-Semibold;
+    font-size: 10px;
+    color: #FFFFFF;
+    letter-spacing: 0.17px;
+    text-align: center;
+    line-height: 0.32rem;
+    margin-left: 1.8rem;
+    margin-top: -0.34rem;
+}
+
+.photo {
+    width: 100%;
+    padding-bottom:.2rem;
+    /* height: 2.24rem; */
+    /*background: palegoldenrod;*/
+    position: relative;
+    border-bottom: 1px solid #f1f3f6;
+}
+.file p{
+    text-align: left;
+    margin-left: 0.58rem;
+    /* margin-top: 0.2rem; */
+    font-size: .14rem;;
+    color: #666666;
+    letter-spacing: 0.17px;
+    /*line-height: 26px;*/
+}
+.file p a{
+    font-family: PingFangSC-Medium;
+    font-size: 0.25rem;
+    color: #2D7FFC;
+    letter-spacing: 0.19px;
+    line-height: 26px;
+    margin-right: 0.1rem;
+}
+.radio{
+    display: flex;
+    text-align: left;
+    position: absolute;
+    top: 0.88rem;
+    right: 0.56rem;
+}
+.radio p{
+    font-family: PingFangSC-Regular;
+    font-size: 0.21rem;
+    color: #333333;
+    letter-spacing: 0.14px;
+    margin-right: 0.14rem;
+}
+.radio input {
+    width: 0.32rem;
+    height: 0.32rem;
+}
+.chargeBtn button { 
+    width: 5.9rem;
+    height: 0.9rem;
+    background: #2D7FFC;
+    color: #fff;
+    box-shadow: 0 5px 15px 0 rgba(45,127,252,0.50);
+    border-radius: 25px;
+    border: none;
+    font-family: PingFangSC-Semibold;
+    font-size: 16px;
+    letter-spacing: 0.19px;
+    text-align: center;
+    margin-top: 1.02rem;
+    margin-bottom: 1.02rem;
+}
+
+.hui-field_core {
+    text-align: right;
+    font-family: PingFangSC-Regular;
+    font-size: 0.25rem;
+    color: #999999;
+    letter-spacing: 0.17px;
+    text-align: right;
+}
+
+.hui-field_title {
+    width: 160px !important;
+    font-size: .2rem;
+
+}
+.example-select_btn-wrapper{
+    margin-top:15px;
+}
+.example-select_arrowRight{
+    display: block;width: 30px;height:30px;
+    background-size: 16px 16px;
+}

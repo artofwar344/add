@@ -1,0 +1,215 @@
+//步数处理
+var avoid = 0; 				//步数上传防重复
+function stepUpload(userId,userName,token){//"1" init,"0" not init,"2" no query in ranking
+	if (avoid == 1) {//正在执行上传则取消
+		return false;
+	}
+	avoid = 1;
+	var avg = 0;//平均步数
+	var searchResult=[];
+	var strdate = checkDate(new Date(),"0");					//当天日期	
+	var strdate1 = checkDate(new Date(),"1");					//当天日期
+	var countFlag = 0;
+	//调用原生组件使用
+	//ios初始化
+	if(new RegExp(/(iPhone|iPad|iPod|iOS)/i).test(navigator.userAgent)){
+		function setupWebViewJavascriptBridge(callback) {
+	        if (window.WebViewJavascriptBridge) { return callback(WebViewJavascriptBridge); }
+	        if (window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback); }
+	        window.WVJBCallbacks = [callback];
+	        var WVJBIframe = document.createElement('iframe');
+	        WVJBIframe.style.display = 'none';
+	        WVJBIframe.src = 'https://__bridge_loaded__';
+	        document.documentElement.appendChild(WVJBIframe);
+	        setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0)
+	    }
+	}else{
+		function connectWebViewJavascriptBridge (callback) { 
+		     if (window.WebViewJavascriptBridge) {
+		           callback(WebViewJavascriptBridge)
+		     } else {
+		           document.addEventListener(
+		               'WebViewJavascriptBridgeReady'
+		                , function() {
+		                     callback(WebViewJavascriptBridge)
+		                },
+		                false
+		           );
+		     }
+		}
+	}
+    //
+	//查询数据库
+	//search("select step_date,step,lastBaseStep from t_step where status=0");
+	search();
+	//查询数据库函数
+	function search(){
+		//ios
+		if(new RegExp(/(iPhone|iPad|iPod|iOS)/i).test(navigator.userAgent)){
+			setupWebViewJavascriptBridge(function(bridge) {
+				bridge.callHandler('qureyStepList', "", function(responseData) {
+					if(responseData == "[]"){
+		        		avoid = 0;							//重置，没有信息之后的下一次无法正常走流程
+		        		return false;
+		        	}
+		           	searchResult=JSON.parse(responseData);
+					resultDeal(searchResult);				//对查询结果进行处理
+				})
+			})
+		}else{		//android
+			connectWebViewJavascriptBridge (function(bridge) {
+				bridge.callHandler(
+			        'qureyStepList'								//查询数据库方法名(查所有)
+			        , {'param': "" }							//传查询sql(修改方法不需再传参)
+			        , function(responseData) {
+			        	if(responseData == "[]"){
+			        		avoid = 0;							//重置，没有信息之后的下一次无法正常走流程
+			        		return false;
+			        	}
+			           	searchResult=JSON.parse(responseData);
+						resultDeal(searchResult);				//对查询结果进行处理
+			        }
+			     );  
+			})
+		}
+	}
+	//修改数据库函数
+	function operate(sql,flag){
+		if(new RegExp(/(iPhone|iPad|iPod|iOS)/i).test(navigator.userAgent)){
+			setupWebViewJavascriptBridge(function(bridge) {
+				bridge.callHandler('handStep', sql, function(responseData) {
+					if (flag == 2) {
+						send();//发交易
+					}
+				})
+			})
+		}else{
+			connectWebViewJavascriptBridge (function(bridge) {
+				window.WebViewJavascriptBridge.callHandler(
+			        'handStep'										//修改数据库方法名
+			        , {'param': sql }								//传查询sql
+			        , function(responseData) {		
+			           	if (flag == 2) {
+							send();//发交易
+						}
+			        }
+			    );  
+			})
+		}
+		
+	}
+	//格式化日期
+	function checkDate (datex,flag) {
+		var mon = datex.getMonth()+1;
+		var d = datex.getDate();
+		if (mon.toString().length==1) {
+			mon = "0" + mon;
+		}
+		if (d.toString().length==1) {
+			d = "0" + d;
+		}
+		if(flag == "0"){
+			newDate = datex.getFullYear() + "" + mon + "" + d;
+		}else{
+			newDate = datex.getFullYear() + "-" + mon + "-" + d;
+		}
+		return newDate;
+	}
+	//查询结果处理
+	function resultDeal(preResult){
+		if (preResult.length != 2) {//两条的时候才进行处理
+			send();
+		} else{
+			//初始化两条的日期
+			var dateArr0 = preResult[0].step_date.split("-");
+			var date0 = new Date(Number(dateArr0[0]),Number(dateArr0[1])-1,Number(dateArr0[2]));
+			var dateArr1 = preResult[1].step_date.split("-");
+			var date1 = new Date(Number(dateArr1[0]),Number(dateArr1[1])-1,Number(dateArr1[2]));
+			//根据日期排序
+			if(date0 > date1){
+				var temp = date0;
+				date0 = date1;
+				date1 = temp;
+				temp = dateArr0;
+				dateArr0 = dateArr1;
+				dateArr1 = temp;
+				temp = preResult[0];
+				preResult[0] = preResult[1];
+				preResult[1] = temp;
+			}
+			if(new RegExp(/(iPhone|iPad|iPod|iOS)/i).test(navigator.userAgent)){//ios不作处理
+				send();
+			} else if (date0.getFullYear() == dateArr1[0] && date0.getMonth()+1 == Number(dateArr1[1]) && date0.getDate()+1 == dateArr1[2]) {			//无间隔 发送交易
+				send();
+			} else{
+				//删除当天数据库表
+				operate("delete from t_step where step_date='" + strdate1 + "'",0);
+				var tempDate = date0;
+				tempDate.setDate(date0.getDate() + 1);
+				var step1 = Number(preResult[1].step);
+				var cut = parseInt((date1 - date0)/1000/60/60/24);//间隔天数
+				avg = Number(step1/(cut+1)).toFixed(0);//平均步数
+				var newResult = "[{}";//拼接要返回的新结果
+				for (var k = 0;k<cut+1;k++) {
+					newResult = newResult + ",{}";
+				}
+				newResult = newResult + "]";
+				newResult = eval(newResult);
+				var sqlStr = '';//要拼接的插入语句
+				var preStep = preResult[1].lastBaseStep;
+				//构造要上传的结果
+				newResult[0].step_date = preResult[0].step_date;
+				newResult[0].step = preResult[0].step;
+				for (var i=1;i<cut+2;i++) {
+					newResult[i].step_date=checkDate(tempDate,"1");//xxxx-xx-xx
+					newResult[i].step = avg.toString();
+					if (i == 1) {
+						sqlStr ="insert into t_step (step_date,step,lastBaseStep,status) values ('" + newResult[i].step_date + "','" + newResult[i].step + "','" + preStep + "',0)";//,()
+					} else{
+						sqlStr = sqlStr + ",('" + newResult[i].step_date + "','" + newResult[i].step + "','" + preStep + "',0)";
+					}
+					tempDate.setDate(tempDate.getDate()+1);
+				}
+				searchResult = newResult;
+				setTimeout(function(){
+					operate(sqlStr,2);//修改数据库
+				},500);
+			}
+		}
+	}
+	//发送交易
+	function send(){
+		avoid = 0;
+		//已登录用户上传步数信息
+		if (userId){					//用户已登录状态
+			//转换时间格式(重点，防止后台报错)
+			$.each(searchResult,function(k,v){
+				v.step_date = v.step_date.split("-").join("");
+			})
+	     	var obj={"tbl_member_id":userId,"user_name":userName,"chg_type":"0","list":searchResult}
+			$.ajax({
+				type : "POST",
+				//url : "http://128.192.179.84:8088/APPS/up/stepUp",		//交易地址
+				url : "https://mobile.yn.gov.cn/APPS/up/stepUp",		//交易地址
+				data: JSON.stringify(obj),								//交易参数 
+				contentType: "application/json;charset=utf-8",
+				timeout: 20000,
+				dataType: "json",										//数据类型
+				beforeSend: function(xhr){
+					xhr.setRequestHeader('c-user-message', token);	    //设置header
+					xhr.setRequestHeader('C-Dynamic-Password-Foruser', token);
+					xhr.setRequestHeader('C-App-Id', 'GSP_APP_001');
+					xhr.setRequestHeader('C-Tenancy-Id', '530000000000');
+					xhr.setRequestHeader('Referer', 'https://zwfw.yn.gov.cn');
+				},
+				success:function(res){
+					res = JSON.parse(JSON.stringify(res).replace("C-Response-Body","data"));		//原字段名报错（非法）
+					if(res.data.rspCode == 200){
+						operate("update t_step set status=1 where status=0 and step_date!='" + strdate1 + "'",0);
+					}
+				},
+				error:function(msg){}
+			})
+		}
+	}
+}

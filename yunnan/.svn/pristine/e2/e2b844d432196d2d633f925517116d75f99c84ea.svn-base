@@ -1,0 +1,201 @@
+var theight = document.documentElement.clientHeight*0.5;
+var twidth = document.documentElement.clientWidth;
+var canvas = document.getElementById('canvas'),
+     ctx = canvas.getContext('2d'),
+     step = document.getElementById('step'),//步数
+     stepnum = 0 ,//初始步数
+     target = 10000,//目标设定步数
+     stepsum = 0,
+     change = 0,  //颜色渐变改变值
+     balls_array = [],	//添加底层白色圈的存放数组	郭旭
+     now_count = 0;		//底层白色圈个数	郭旭
+     obj = {
+       width: twidth,//画布宽度
+       height: theight,//画布高度
+       dx: twidth/25, // 刻度宽度
+       dy: 2,  // 刻度高度
+       num: 400, // 刻度条数
+       //171215 修改参数  郭旭
+       r: 0.315*twidth,  // 半径
+       start:180,  //开始角度			
+       progress: 0, // 显示进度 （单位百分比）
+       index: 0, // 开始刻度
+       base: 1000,//临界刻度
+       defaultColor: '#b5e9fb', // 开始颜色
+       beginColor: '#6fd5f9', //浅色
+       endColor: '#09b6f2' //深色
+     };
+    //角度计算方法  郭旭
+    obj.deg = (180 + obj.start)/obj.num;
+    var scaleRate = 2;//转换比例
+    $("#ringArea").css("zoom",1/scaleRate);
+  	canvas.width = obj.width * scaleRate;
+  	canvas.height = obj.height * scaleRate;
+  	ctx.scale(scaleRate,scaleRate);
+  
+   animation();//首次执行画图   20181008 本地执行js方法防止加载顺序不同造成方法不存在
+  //171215 添加动画的flag
+  var drawFlag = 0;
+  var continueFlag = 0;
+  //步数更新
+  function steptostep(backnum){
+	  stepsum = backnum;//记步组件回调步数
+	  if (stepnum > stepsum) {
+	    resetRing();
+	  }
+	  if(drawFlag == 0){
+	    animate(stepnum,stepsum,1);//后续进度条
+	    stepnum = stepsum;
+	  }   
+  }
+  //初始表盘刻度
+  function animation(){
+  		ctx.save();
+	    //重画底层圈
+	    if(sessionStorage.height != 480){
+	    	//中圈	obj.r-obj.dx*2
+	    	ctx.beginPath();
+	  	    ctx.arc(obj.width/2,obj.height/2*1.11,obj.r,0, 2*Math.PI,true);
+	  	    ctx.lineWidth=obj.dx;
+	  	    ctx.strokeStyle=obj.defaultColor;
+	    	ctx.stroke();
+	    }else{
+	    	//中圈
+	    	ctx.beginPath();
+	  	    ctx.arc(obj.width/2,obj.height/2*1.05,obj.r-obj.dx*1.2,0, 2*Math.PI,true);
+	  	    ctx.lineWidth=obj.dx/2;
+	  	    ctx.strokeStyle=obj.defaultColor;
+	    	ctx.stroke();
+	    }
+	}
+
+	// 画出环形刻度线
+	function draw(x,color,sstep){ 
+	    //171215 郭旭 修改动画flag值
+	    drawFlag = 1;
+	  
+	    ctx.save();
+	    ctx.beginPath();   //画笔开始  
+
+	    var deg = Math.PI/180*(obj.start + obj.deg*x) + Math.PI/180*(obj.start + obj.deg*parseInt(2500/(target/obj.num))); // 角度换算弧度
+	    //console.log(deg)
+	    var offsetY = -(Math.sin(deg)*(obj.r+obj.dx)); // 计算刻度Y轴位置
+	    var offsetX = -(Math.cos(deg)*(obj.r+obj.dx)); // 计算刻度X轴位置
+
+	    if(sessionStorage.height != 480){
+	    	ctx.translate(obj.width/2+offsetX,obj.height/2*1.11+offsetY); // 修改画布坐标原点
+	    	ctx.rotate(deg); // 旋转刻度
+			ctx.strokeStyle = color;
+			ctx.fillStyle = color;
+			//步数深色圈
+			ctx.stroke();
+			ctx.fill();
+			ctx.strokeStyle = color;
+		    //ctx.arc(obj.dx*1.8,0,obj.dx/8,0,2*Math.PI);
+		    ctx.arc(obj.dx,0,obj.dx/6,0,2*Math.PI);
+		    ctx.stroke()
+		    //添加结束位置的白点
+			ctx.beginPath();
+			ctx.fillStyle = "#fff";
+			//ctx.arc(obj.dx*1.8,0,obj.dx/6,0,2*Math.PI);
+			ctx.arc(obj.dx,0,obj.dx/6,0,2*Math.PI);
+			ctx.fill();
+		    ctx.restore();
+	    }else{
+	    	ctx.translate(obj.width/2+offsetX,obj.height/2*1.05+offsetY); // 修改画布坐标原点
+	    	ctx.rotate(deg); // 旋转刻度
+			ctx.strokeStyle = color;
+			ctx.fillStyle = color;
+			//步数深色圈
+			ctx.stroke();
+			ctx.fill();
+			ctx.strokeStyle = color;
+		    ctx.arc(obj.dx*2.2,0,obj.dx/8,0,2*Math.PI);
+		    ctx.stroke()
+		    //添加结束位置的白点
+			ctx.beginPath();
+			ctx.fillStyle = "#fff";
+			ctx.arc(obj.dx*2.2,0,obj.dx/6,0,2*Math.PI);
+			ctx.fill();
+		    ctx.restore();
+	    }
+		
+	    //171215 修改动画flag值 郭旭
+	    drawFlag = 0;
+	}
+	
+    //171215 添加颜色值的转变 郭旭
+	var begin = obj.beginColor.substring(1);
+	var num1 = convert(begin.substring(0,2),16,10),
+	    num2 = convert(begin.substring(2,4),16,10),
+	    num3 = convert(begin.substring(4,6),16,10); 
+	var ss = 0; 
+	//计算格数(起始步数，终止步数，时间)
+	function animate(sstep,nstep,time){
+		//console.log(sstep);
+	    var s = parseInt(sstep/(target/obj.num)); //起始进度格数计算
+	    //console.log(s);
+	    if (s > ss){
+	        num1 = num1 - 0.408;
+	        num2 = num2 - 0.124;
+	        num3 = num3 - 0.028;
+	        color = 'rgb('+Math.round(num1)+','+Math.round(num2)+','+Math.round(num3)+')';
+	        if(sstep > 10000){
+	        	draw(400,color,sstep);//3500进度条
+	        }else{
+	        	draw(s,color,sstep);//3500进度条
+	        }
+	        
+	    }
+
+	    ss = s ;
+	    step.textContent = sstep; // 步数计算
+	    var timmer = setTimeout(function(){
+	        if(sstep >= nstep ){
+	        	clearTimeout(timmer);           
+	        }else{
+	        	if ((nstep- sstep) < parseInt(target/obj.num)){
+	            	sstep = nstep ;
+	            }else{
+	            	sstep = sstep+parseInt(target/obj.num);
+	            }
+	        	animate(sstep,nstep,time);  
+	        }
+	    },time)
+	}
+	
+	
+	//重置圆
+	function resetRing(){
+	    for(var x=0; x < obj.num+1;x++){ //灰色刻度线
+	        draw1(x,obj.defaultColor); 
+	    }
+	    ss=0;
+	    stepnum = 0;
+	}
+	   
+//171215 进制转换函数 郭旭
+/** 
+ * 进制转换函数 
+ * @param  string     num  待转换的进制数，如 110(二进制),26(八进制),10(十进制),AF(十六进制) 
+ * @param  Interger   from 源进制 2|8|10|16 
+ * @param  Interger   to   目标进制 2|8|10|16 
+ * @return 转换结果 
+ */  
+function convert(num,from,to){  
+    var pattern=/^(2|8|10|16){1}$/;  
+    if(!pattern.test(from)||!pattern.test(to)){  
+        console.error('源进制from和目标进制to必须都为[2,8,10,16]其中的数字');  
+        return;  
+    }  
+    //如果源进制为十进制  
+    if(from==10){  
+        return parseInt(num).toString(to);  
+    }  
+    //如果目标进制是十进制  
+    if(to==10){  
+        return parseInt(num,from);  
+    }  
+    //其他进制的转换  
+    return parseInt(num,from).toString(to);  
+}

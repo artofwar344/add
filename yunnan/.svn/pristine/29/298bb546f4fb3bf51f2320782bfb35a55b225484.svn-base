@@ -1,0 +1,97 @@
+#app {
+    background: #f1f3f6;
+}
+.canvas{
+    background:#fff;
+}
+.save_btn {
+    margin-top: .5rem;
+    border: 0;
+    border-radius: .6rem;
+    background: #2D7FFC;
+    color: #fff;
+    font-size: .32rem;
+    width: 5.9rem;
+    height: .9rem;
+    line-height: .9rem;
+}
+
+.footer {
+    padding-top: .2rem;
+    background: #f1f3f6;
+}
+
+.nav_title {
+    height: .72rem;
+    line-height: .72rem;
+    text-align: left;
+    font-size: .28rem;
+    background: #f1f3f6;
+    padding-left: .32rem;
+    color: #999;
+    span{
+        font-size: .26rem;
+        color: orange;
+    }
+}
+
+.canvas {
+    text-align: left;
+    h1 {
+        font-size: .34rem;
+        height: .8rem;
+        line-height: .8rem;
+        text-align: center;
+    }
+    div {
+        ul li {
+            line-height: .52rem;
+        }
+        padding-top:.2rem;
+        padding-bottom:.2rem;
+        .scl_title {
+            display: inline-block;
+            min-width: 1.15rem;
+            padding-left: .36rem;
+            padding-right: .4rem;
+            text-align: left;
+            font-size: 0.28rem;
+            color: #666666;
+        }
+
+        span{
+            font-size: 0.28rem;
+            color: #333333;
+        }
+    }
+}
+
+.example-select_btn-wrapper {
+    margin-top: 20px;
+}
+
+.example-select_arrowRight {
+    display: block;
+    width: 16px;
+    height: 16px;
+    /*background-image: url(../../../src/common/images/common-arrowRight.png);*/
+    background-size: contain;
+    margin-left: 10px;
+}
+
+.index{
+    .commonBtn{
+        margin-bottom:0;
+    }
+    .announce{
+        background: none;
+        padding: 0.26rem 0;
+        margin: 0 auto;
+    }
+}
+
+.header{
+    &.noMarginTop{
+        margin-top:-0.2rem;
+    }
+}

@@ -1,0 +1,154 @@
+.form-box {
+  background: #fff;
+  padding: 0 0.36rem 1rem;
+
+  .form-item {
+    height: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid  #ECECEC;
+
+    .label {
+      height: 1rem;
+      font-family: PingFangSC-Regular;
+      font-size: 14px;
+      color: #151515;
+      letter-spacing: 0.17px;
+
+      .star {
+        display: inline-block;
+        height: 1rem;
+        line-height: 1rem;
+        color: red;
+        font-weight: bold;
+        font-size: 18px;
+        position: relative;
+        top: 5px;
+      }
+    }
+
+    .content {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 15px;
+
+      .text {
+        flex: 1;
+        text-align: right;
+        margin-right: 10px;
+        height: 1rem;
+        line-height: 1.15rem;
+        font-family: PingFangSC-Regular;
+        font-size: 14px;
+        color: #333333;
+        letter-spacing: 0.17px;            
+      }
+
+      .default {
+        color: #ccc;
+      }
+
+      .arrow {
+        font-size: 18px;
+        font-weight: bold;
+        color: #999;
+      }
+    }
+  }
+
+
+  .form-item.show {
+    .content-text {
+      line-height: 1.15rem;
+    }
+  }
+
+  .form-item.input {
+    .content-input {
+      flex: 1;
+      text-align: right;
+      height: 1rem;
+      vertical-align: middle;
+      font-family: PingFangSC-Regular;
+      font-size: 14px;
+      color: #333333;
+      letter-spacing: 0.17px;            
+    }
+  }
+
+  .form-item.textarea {
+    height: 1.4rem;
+    .content-input {
+      flex: 1;
+      margin-left: 0.5rem;
+      line-height: 20px;
+      letter-spacing: 1px;
+      position: relative;
+      top: 0.24rem;
+      text-align: right;
+    }
+  }
+
+  .form-item.switch {
+    height: 1.2rem;
+    .label {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      span {display: inline-block}
+
+      .text {
+        width: 60%;
+        margin-left: 5px;
+        line-height: 20px;
+        text-align: left;
+      }
+    }
+
+    .content {
+      justify-content: flex-end;
+      .hui-switch-large {
+        width: 80px;
+      }
+  
+      .hui-switch-large.hui-switch-checked:after {
+        left: 51px;
+      }
+    }
+  }
+}
+
+.btn-next {
+  margin: auto;
+  margin-bottom: 0.8rem;
+  height: 0.9rem;
+  line-height: 0.9rem;
+  text-align: center;
+  color: #fff;
+  background: #2D7FFC;
+  border-radius: 25px;
+  width: 80%
+
+}
+
+
+// placeholder
+
+// input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+//   color: #ccc;
+// }
+
+// input:-moz-placeholder, textarea:-moz-placeholder {
+//   color: #ccc;
+// }
+
+// input::-moz-placeholder, textarea::-moz-placeholder {
+//   color: #ccc;
+// }
+
+// input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+//   color: #ccc;
+// }

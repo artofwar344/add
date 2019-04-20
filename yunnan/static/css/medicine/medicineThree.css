@@ -1,0 +1,108 @@
+.medicineThree{
+	width: 100%;
+	background: #F1F3F6;
+}
+.medicineThreeTop{
+	width: 100%;
+	min-height: 3.25rem;
+}
+.medicineBox{
+	width: 100%;
+	min-height: 0.8rem;
+	background: #FFFFFF;
+	display: flex;
+	text-align: left;
+}
+.medicineBox h1{
+	flex: 1 0 auto;
+	font-family: PingFangSC-Regular;
+	font-size: .28rem;
+	color: #999999;
+	letter-spacing: 0.17px;
+	margin-left: 0.36rem;
+	line-height: 35px;
+}
+.medicineBox p{
+	font-family: PingFangSC-Regular;
+	font-size: .28rem;
+	color: #333333;
+	letter-spacing: 0.17px;
+	text-align: right;
+	margin-right: 0.36rem;
+	line-height: 35px;
+}
+.medicineThreeOne{
+	margin-top: .16rem;
+}
+.medicineThreeTwo {
+	width: 100%;
+	height: .7rem;
+	line-height: .7rem;
+}
+.medicineThreeTwo p{
+	font-family: PingFangSC-Regular;
+	font-size: .28rem;
+	color: #999999;
+	letter-spacing: 0.17px;
+	text-align: justify;
+	margin-left: 0.34rem;
+}
+.foodOne{
+	width: 6.8rem;
+	height: 3.38rem;
+    background: #ECECEC;
+    margin: auto;
+    text-align: left;
+    margin-top: .36rem;
+}
+
+.foodOneTit{
+	display: flex;
+}
+.foodOneTit span{
+	width: .06rem;
+	height: .24rem;
+	background: #2D7FFC;
+	margin-left: .36rem;
+	margin-top: .3rem;
+}
+.foodOneTit p{
+	margin-top: .2rem;
+	margin-left: .1rem;
+	font-family: PingFangSC-Medium;
+	font-size: .3rem;
+	color: #333333;
+	letter-spacing: 0;
+	text-align: left;
+}
+.foodOneNote p{
+	font-family: PingFangSC-Regular;
+	font-size: .24rem;
+	color: #666666;
+	letter-spacing: 0;
+	text-align: left;
+	line-height: 20px;
+	margin-left: .35rem;
+	margin-bottom: 0.06rem;
+}
+.statisticalBtn button{
+	width: 5.5rem;
+	height: 0.9rem;
+	background: #2D7FFC;
+	box-shadow: 0 5px 15px 0 rgba(45,127,252,0.50);
+	border-radius: 25px;
+	margin-top: 1rem;
+	font-family: PingFangSC-Semibold;
+	font-size: .32rem;
+	letter-spacing: 0.19px;
+	text-align: center;
+	border: none;
+}
+.statisticalBtn button a{
+	color: #FFFFFF;
+}
+
+
+
+
+
