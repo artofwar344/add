@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		img {
+			width: 170px;
+			height: 93px;
+
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
+		.list {
+			width: 616px;
+			height: 24px;
+		}
+
+		.list li {
+			width: 77px;
+			height: 24px;
+			float: left;
+			text-align: center;
+		}
+
+		.div {
+			width: 616px;
+			min-height: 300px;
+		}
+
+		ul {
+			width: 616px;
+		}
+
+		ul li {
+			width: 616px;
+			height: 100px;
+			position: relative;
+		}
+
+		.lidiv {
+			position: relative;
+			width: 152px;
+			height: 115px;
+		}
+
+		.lidiv span {
+			position: absolute;
+			width: 50px;
+			height: 19px;
+			display: block;
+			color: #fff;
+			background: #CCc;
+			border-radius: 20px;
+			text-align: center;
+			font-size: 12px;
+			line-height: 18px;
+		}
+
+		.dov {
+			position: absolute;
+			width: 400px;
+			top: 6px;
+			left: 227px;
+			height: 70px;
+		}
+	</style>
+</head>
+
+<body>
+	<ol class="list">
+		<li>最新文章</li>
+		<li>大公司</li>
+		<li>消费</li>
+		<li>娱乐</li>
+		<li>前沿技术</li>
+		<li>汽车交通</li>
+		<li>区块链</li>
+		<li>技能Get</li>
+	</ol>
+	<div class="div">
+		<ul class="ul">
+			<li class="li">
+				<div class="lidiv">
+					<span class="span">企业</span>
+					<img src="36kr机试页面部分.png" />
+				</div>
+				<div class="dov">
+					<h3>ISO附近地方奇偶的房间</h3>
+					<p>的风格没给京东</p>
+					<span>xxx</span>
+					<span>donfd</span>
+				</div>
+			</li>
+		</ul>
+	</div>
+</body>
+
+</html>
+<!-- <script src="jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script> -->
+<script src="https://cdn.bootcss.com/jquery/3.3.0/jquery.js"></script>
+<script type="text/javascript">
+
+
+	$(function () {
+		var fr = $(".list li")
+		var num = 0
+		// console.log(fr ,'fr'); 
+		$.ajax({
+			url: "news.json",
+			success: function (data) {
+				// console.log(data.items[0].column_name, '111111111111');
+				$.each(data.items, function (index, item) {
+					console.log(data.items[index].column_name);
+					if (data.items[index].column_name == '大公司') {
+						console.log(data.items[index], '过滤后数据');
+						$(`<li class="li">
+								<div class="lidiv">
+								<span class="span">${data.items[index].summary}</span>
+								<img src="36kr机试页面部分.png"/>
+								</div>
+								<div class="dov"> 
+								<h3>ISO附近地方奇偶的房间</h3>
+								<p>的风格没给京东</p>
+								<span >xxx</span>
+								<span>donfd</span>
+								</div>
+								</li>`).appendTo('.list-wp')
+					}
+				})
+			}
+		})
+		fr.map(function (itIndex, itemEls) {
+			$(itemEls).click(function () {
+				console.log($(this)[0]['innerHTML'], 'innerhtml') //点击
+				$('.list-wp').empty()
+				var indexHTMLShow = $(this)[0]['innerHTML'];
+				$.ajax({
+					url: "news.json",
+					success: function (data) {
+						// console.log(data.items[0].column_name, '111111111111');
+						$.each(data.items, function (index, item) {
+							console.log(data.items[index].column_name); // 行名字
+							if (data.items[index].column_name == indexHTMLShow) {
+								console.log(data.items[index], '过滤后数据');
+
+							}
+						})
+						// 循环
+					}
+				})
+				// ajax
+			});
+		})
+	})
+ 
+</script>

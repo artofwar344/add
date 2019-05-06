@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        img{
+            display: block;
+            max-height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>懒加载页面</h1>
+        <img src="./../img/cds1.jpg" data-src='./../img/cds1.jpg' alt=""> 
+        <img src="./../img/cds2.jpg" data-src='./../img/cds2.jpg' alt="">
+        <img src="./../img/cds3.jpg" data-src='./../img/cds3.jpg' alt="">
+        <img src="./../img/cds4.jpg" data-src='./../img/cds4.jpg' alt="">
+        <img src="./../img/cds5.jpg" data-src='./../img/cds5.jpg' alt="">
+        <img src="./../img/cds6.jpg" data-src='./../img/cds6.jpg' alt="">
+        <img src="./../img/cds7.jpg" data-src='./../img/cds7.jpg' alt="">
+        <img src="./../img/cds8.jpg" data-src='./../img/cds8.jpg' alt="">
+        <img src="./../img/cds9.jpg" data-src='./../img/cds9.jpg' alt="">
+        <img src="./../img/cds10.jpg" data-src='./../img/cds10.jpg' alt=""> 
+    </div>
+</body>
+</html>
+<script>
+    var scrollTop = window.scrollY;
+    var imgs = Array.from(document.querySelectorAll('img'));
+
+    lazyLoad();
+
+    window.onscroll = () => {
+        scrollTop = window.scrollY;
+        lazyLoad(); 
+    }
+    function lazyLoad(){
+        imgs.forEach((item,index)=>{
+            if( item.offsetTop < window.innerHeight + scrollTop ){
+                console.log(item.offsetTop)
+                item.setAttribute('src',item.dataset.src)
+            }
+        })
+    }
+</script> 
