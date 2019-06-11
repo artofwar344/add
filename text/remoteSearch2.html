@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+
+<body>
+	<div> 
+		<input type="text" id="searchInput"
+		 oninput="searchInput(event)" onporpertychange="searchInput(event)" />
+	</div>
+</body> 
+ 
+<script>  
+ 
+var innerUrl =null 
+var searchInputBut = document.getElementById('searchInput')  
+var responseHandler;
+function searchInput(e){ // https://movie.douban.com/j/subject_suggest
+	// sendAjax(searchInputBut.value)
+	// innerUrl =  'https://movie.douban.com/j/subject_suggest?q=' +searchInputBut.value  
+		innerUrl =  'https://api.douban.com/v2/movie/search?q=%E7%A5%9E&start=0&count=10';
+		getJSONP(innerUrl ,(en)=>{
+		 console.log(en)
+		})
+// var script = document.createElement('script');  
+// script.src = 'https://movie.douban.com/j/subject_suggest?q=' +searchInputBut.value ;  
+// document.body.appendChild(script);  
+
+} 
+
+ 
+function getJSONP(url, cb) {
+  if (url.indexOf('?') === -1) {
+    url += '?callback=fn';
+  } else {
+    url += '&callback=fn';
+  }
+ 
+  // 创建script 标签
+  var scripts = document.createElement('script');
+  scripts.setAttribute('src', url)
+  document.body.appendChild(scripts); 
+ 
+  // 在函数内部实现包裹函数，因为要用到cb
+  responseHandler = function(json) {
+    try {
+		console.log(json ,'json');
+		
+      cb(json)
+    } finally {
+      // 函数调用之后不管发生什么都要移除对应的标签，留着也没用
+      script.parentNode.removeChild(scripts);
+    }
+  }
+  console.log(scripts ,'script 1111111111');
+
+    
+}
+function fn(inn) {
+	console.log(inn);
+	
+}
+
+
+</script>
+
+</html>

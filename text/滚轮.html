@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset+"utf-8">
+	<title>无标题文档</title>
+</head>
+
+<body> 
+	<script>
+
+		//判断浏览器类型
+		var client = function () {
+			var engine = {
+				ie: 0,
+				gecko: 0,
+				webkit: 0,
+				khtml: 0,
+				opera: 0,
+				ver: null
+			};
+			return {
+				engine: engine
+			};
+		}();
+
+		var EventUtil = {
+			getEvent: function (event) {
+				return event ? event : window.event;
+			},
+			addHandler: function (element, type, handler) {
+				if (element.addEventListener) {
+					element.addEventListener(type, handler, false);
+				} else if (element.attachEvent) {
+					element.attachEvent("on" + type, handler);
+				} else {
+					element["on" + type] = handler;
+				}
+			},
+			getWheelDelta: function (event) {
+				var driect = null;
+				if (event.wheelDelta) {
+					driect = (client.engine.opera && client.engine.opera < 9.5 ? -event.wheelDelta : event.wheelDelta);
+				} else {
+					driect = -event.detail * 40;
+				}
+				return (driect > 0 ? 1 : -1);
+			}
+		};
+
+		//调用方法getWheelDelta()
+		(function () {
+			function handleMouseWheel(event) {
+				event = EventUtil.getEvent(event);
+				var delta = EventUtil.getWheelDelta(event);
+				alert(delta);
+			}
+			EventUtil.addHandler(document, "mousewheel", handleMouseWheel);
+			EventUtil.addHandler(document, "DOMMouseScroll", handleMouseWheel);
+		})()
+//输出：向上滚动鼠标滚轮时弹出‘1’，向下滚动鼠标滚轮时弹出‘-1’
+	</script>
+
+</body>
+
+</html>

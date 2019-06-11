@@ -1,0 +1,37 @@
+@charset "utf-8";
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #c7af42;
+}
+
+h2 {
+    color: #b1063f;
+}
+
+h3 {
+    color: #7575e4;
+}
+
+h6 {
+    color: #3b30d6;
+}
+
+#nbsp {
+    text-align: center;
+}
+
+.newline {
+    text-align: right;
+}
+
+.setWH {
+    background: #3226ce;
+    width: 200px;
+    height: 200px;
+}

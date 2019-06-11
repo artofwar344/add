@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>day2-3</title>
+    <style>
+        .fontSty {
+            font-size: 12px
+        }
+
+        .fontSty2 {
+            font-size: 1em
+        }
+
+        .fontSty3 {
+            color: red;
+        }
+
+        .fontSty3 :nth-child(2) {
+            color: #666;
+        }
+
+        .fontSty3 :nth-child(3) {
+            color: #000;
+        }
+
+        .fontSty3 :nth-child(4) {
+            color: #fff;
+            background: #666
+        }
+
+        .fontSty3 :nth-child(5) {
+            color: rgb(0, 0, 0)
+        }
+
+        .fontSty3 :nth-child(6) {
+            color: rgb(255, 0, 0)
+        }
+
+        .fontSty3 :nth-child(7) {
+            color: transparent;
+            /* background: #666; */
+            border: #000 1px solid;
+        }
+
+        .fontSty3 :nth-of-type(8) {
+            opacity: 0.3;
+            color: aqua 
+        }
+
+        /* .fontSty3 :nth-child(8) {
+            opacity: 0.3;
+        } */
+    </style>
+</head>
+
+<body>
+    <div class="fontSty">
+        <span>
+            font-size:12px;
+        </span>
+    </div>
+    <div class="fontSty2">
+        <span>
+            color:red;
+            font-size:1em;
+            1em=16px,0.75em=12px; rem
+        </span>
+    </div>
+    <div class="fontSty3">
+        <span>
+            1 color:red;
+        </span>
+        <span>
+            2 color:#666;
+        </span>
+        <span>
+            3 color:#000;
+        </span>
+        <span>
+            4 color:#fff;
+        </span>
+        <span>
+            5 color: rgb(red, green, blue);
+        </span>
+        <span>
+            6 color: rgb(255, 0, 0);
+        </span>
+        <span>
+            7 color:transition
+        </span>
+        <span>
+            8 opacity: 0.3;
+        </span>
+        <span style="color: rgba(228, 84, 84, 0.568);">
+            9 color: rgba(255, 0, 0, 0.3)
+        </span>
+    </div>
+</body>
+
+</html>
