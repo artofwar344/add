@@ -1,0 +1,75 @@
+<html>
+<head>
+  <title>day10怪异盒和弹性盒.html</title>
+  <basefont face="微软雅黑" size="2" />
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <meta name="exporter-version" content="YXBJ Windows/600718 (zh-CN, DDL); Windows/10.0.0 (Win64);"/>
+  <style>
+    body, td {
+      font-family: 微软雅黑;
+      font-size: 10pt;
+    }
+  </style>
+</head>
+<body>
+<a name="540"/>
+<h1>day10怪异盒和弹性盒.html</h1>
+
+<div>
+<span><h2>怪异盒模型</h2><h3> box-sizing</h3><p>box-sizing 属性允许您以特定的方式定义匹配某个区域的特定元素。</p><h4>content-box</h4><p>这是由 CSS2.1 规定的宽度高度行为。宽度和高度分别应用到元素的内容框。在宽度和高度之外绘制元素的内边距和边框。<br/><img src="day10怪异盒和弹性盒.html_files/Image.jpg" type="image/jpeg" data-filename="Image.jpg"/></p><h4>border-box</h4><p>为元素设定的宽度和高度决定了元素的边框盒。<br/>
+就是说，为元素指定的任何内边距和边框都将在已设定的宽度和高度内进行绘制。 通过从已设定的宽度和高度分别减去边框和内边距才能得到内容的宽度和高度。<br/><img src="day10怪异盒和弹性盒.html_files/Image [1].jpg" type="image/jpeg" data-filename="Image.jpg"/></p><h2>CSS3 弹性盒</h2><h3>新版弹性盒</h3><h4> 1、display:flex</h4><p><span>说明：</span> 设置为弹性盒（父元素添加）</p><h4>2、flex-direction（主轴排列方式）</h4><p><span>说明:</span></p><p>顺序指定了弹性子元素在父容器中的位置<br/>
+　　　　row 默认在一行内排列<br/>
+row-reverse：反转横向排列（右对齐，从后往前排，最后一项排在最前面。<br/>
+column：纵向排列。<br/>
+column-reverse：反转纵向排列，从下往上排，最后一项排在最上面</p><h4> 3、justify-content（主轴对齐方式）</h4><p><span>说明：</span> 内容对齐（justify-content）属性应用在弹性容器上，把弹性项沿着弹性容器的主轴线（main axis）对齐<br/>
+■ flex-start默认，顶端对齐<br/>
+■ flex-end末端对齐<br/>
+■ center居中对齐<br/>
+■ space-between两端对齐，中间自动分配<br/>
+■ space-around自动分配距离</p><h4> 4、align-items（侧轴对齐方式）</h4><p><span>说明：</span> 侧轴对齐方式<br/>
+flex-start：弹性盒子元素的侧轴（纵轴）起始位置的边界紧靠住该行的侧轴起始边界。<br/>
+flex-end：弹性盒子元素的侧轴（纵轴）起始位置的边界紧靠住该行的侧轴结束边界。<br/>
+center：弹性盒子元素在该行的侧轴（纵轴）上居中放置。（如果该行的尺寸小于弹性盒子元素的尺寸，则会向两个方向溢出相同的长度）。<br/>
+baseline：如弹性盒子元素的行内轴与侧轴为同一条，则该值与'flex-start'等效。其它情况下，该值将参与基线对齐。</p><h4> 5、flex-wrap</h4><p><span>说明：</span> 该属性控制flex容器是单行或者多行，同时横轴的方向决定了新行堆叠的方向。<br/>
+nowrap：flex容器为单行。该情况下flex子项可能会溢出容器<br/>
+wrap：flex容器为多行。该情况下flex子项溢出的部分会被放置到新行，子项内部会发生断行<br/>
+wrap-reverse：反转 wrap 排列。</p><h4> 6、align-content（行与行之间对齐方式）</h4><p><span>说明：</span> 当伸缩容器的侧轴还有多余空间时，本属性可以用来调准「伸缩行」在伸缩容器里的对齐方式，这与调准伸缩项目在主轴上对齐方式的 &lt;' justify-content'&gt; 属性类似。<span style="display:inline">请注意本属性在只有一行的伸缩容器上没有效果。</span><br/>
+■ flex-start没有行间距<br/>
+■ flex-end底对齐没有行间距<br/>
+■ center居中没有行间距<br/>
+■ space-between两端对齐，中间自动分配<br/>
+■ space-around自动分配距离</p><h4> 7、align-self</h4><p><span>说明：</span> align-self 属性规定灵活容器内被选中项目的对齐方式。<br/>
+注意：align-self 属性可重写灵活容器的 align-items 属性<br/>
+auto 默认值。元素继承了它的父容器的 align-items 属性。如果没有父容器则为 &quot;stretch&quot;。<br/>
+Stretch 元素被拉伸以适应容器。<br/>
+Center 元素位于容器的中心。<br/>
+flex-start 元素位于容器的开头。<br/>
+flex-end 元素位于容器的结尾。</p><h4> 8、order</h4><p><span>说明：</span> number排序优先级，数字越大越往后排，默认为0，支持负数。</p><h4> 9、flex</h4><p><span>说明：</span> 复合属性。设置或检索弹性盒模型对象的子元素如何分配空间。<br/>
+缩写「flex: 1」, 则其计算值为「1 1 0%」<br/>
+缩写「flex: auto」, 则其计算值为「1 1 auto」<br/>
+flex: none」, 则其计算值为「0 0 auto」<br/>
+flex: 0 auto」或者「flex: initial」, 则其计算值为「0 1 auto」，即「flex」初始值</p><h4>  10、flex三个属性值介绍</h4><p><span>flex-grow</span> 一个数字，规定项目将相对于其他灵活的项目进行扩展的量。 <span>flex-shrink</span> 一个数字，规定项目将相对于其他灵活的项目进行收缩的量。 <span>flex-basis</span> 项目的长度</p><h3>旧版盒模型(了解)</h3><h4> 1、display:box</h4><p><span>说明：</span> (必须加前缀)设置弹性盒 使用如下属性，必须在父代设置display:box;</p><h4>2、box-orient</h4><p><span>说明：</span> 在父级上设置该属性，则子代按水平排列或竖直排列。<br/>
+　　　　注：所有主流浏览器不支持该属性，必须加上前缀。<br/>
+　　　　1）horizontal  水平排列，子代总width=父级width。若父级固定宽度，则子代设置的width无效，子代会撑满父级宽度。<br/>
+　　　　2）vertical  垂直排列，子代总height=父级height。若父级固定高度，则子代设置的height无效，子代会撑满父级高度。</p><h4> 3、 box-pack</h4><p><span>说明：</span> 在父级设置，子代的水平对齐方式。（父容器里面主轴对齐方式）<br/>
+　　　　1）start  水平左对齐<br/>
+　　　　2）end  水平右对齐<br/>
+　　　　3）center  水平居中对齐</p><h4> 4、 box-align</h4><p><span>说明：</span> 在父级设置，子代的垂直对齐方式。（父容器里面子容器侧轴对齐方式）<br/>
+　　　　1）start  垂直顶部对齐<br/>
+　　　　2）end 垂直底部对齐<br/>
+　　　　3）center 垂直居中对齐<br/>
+　　　　4）stretch 拉伸子代的高度，与父级设置的高度一致。子代height无效。</p><h4> 5、 box-direction</h4><p><span>说明：</span> 在父级上设置该属性，确认子代的排列顺序。<br/>
+　　　　1）normal  默认值，子代按html顺序排列<br/>
+　　　　2）reverse  反序</p><h4> 6、 box-flex</h4><p><span>说明：</span> 1）占父级元素宽度的number份<br/>
+　　　　2）若子元素设置固定宽度，则该子元素应用固定宽度，其他未设置固定宽度的字元素将余下的父级宽度（父级-已设置固定宽度的子代元素的总宽度按　number占份数<br/>
+　　　　3）若子元素有margin值，则按余下（父级宽度-子代固定总宽度-总margin值）宽度占number份</p><h2>CSS3 多列</h2><h3>1、column-count</h3><p><span>说明：</span> 属性规定元素应该被分隔的列数<br/>
+适用于：除table外的非替换块级元素, table cells, inline-block元素</p><h3>2、column-gap</h3><p><span>说明：</span>说明： 属性规定列之间的间隔大小</p><h3>3、column-rule</h3><p><span>说明：</span> 设置或检索对象的列与列之间的边框。复合属性。<br/>
+column-rule-color规定列之间规则的颜色。<br/>
+column-rule-style规定列之间规则的样式。<br/>
+column-rule-width规定列之间规则的宽度。</p><h3>4、column-fill</h3><p><span>说明：</span> 设置或检索对象所有列的高度是否统一<br/>
+auto：列高度自适应内容<br/>
+balance：所有列的高度以其中最高的一列统一</p><h3>5、column-span</h3><p><span>说明：</span> 设置或检索对象元素是否横跨所有列。<br/>
+none：不跨列<br/>
+all：横跨所有列</p><h3>6、column-width</h3><p><span>说明：</span> 设置或检索对象每列的宽度</p><h3>7、columns</h3><p><span>说明：</span> 设置或检索对象的列数和每列的宽度。复合属性</p><span style="font-size:30px">注释：<br/>
+Internet Explorer 10 和 Opera 支持多列属性。 Firefox 需要前缀 -moz-。 Chrome 和 Safari 需要前缀 -webkit-。</span></span>
+</div></body></html> 
