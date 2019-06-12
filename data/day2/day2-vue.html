@@ -10,19 +10,48 @@
 <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
 
 <body>
-    <div id="app"></div>
+    <div id="app">
+        if<div v-if="true">{{a}}</div>
+        <div v-else="false">{{a}}</div>
+        else
+        <!-- <div v-if="b">{{a}}</div> -->
+        <div v-show="inputValue">{{inputValue}}</div>
+        <div>v-model input</div>
+        <input v-model="message" type="text" style="width:20%" />
+        <div>v-bind input</div>
+        <input v-bind:value="inputValue" type="text" style="width:20%" />
+
+        <div v-for="to in todos">{{to.text}}</div>
+    </div>
 </body>
 
 </html>
 <!-- <script src="./js/day2-vue.js"></script> -->
 <script>
 
-    import first from './js/first';
+    // import first from './js/first';
 
     var vm = new Vue({
         el: '#app',
-        data: { message: 'helloword' },
-        components: { first }
-    });
+        data: {
+            a: 1,
+            message: '页面加载于 ' + new Date().toLocaleString(),
+            todos: [
+                { text: '学习 JavaScript' },
+                { text: '学习 Vue' },
+                { text: '整个牛项目' }
+            ],
+            resettodos: '',
+            inputValue: '22'
+        },
+        created: function () {
+            // `this` 指向 vm 实例
+            // console.log('a is: ' + this.a)
+            this.todos.map(es => {
+                this.resettodos += es.text + '+=+'
+            })
+        }
+    })
+    // document.getElementById('app').innerHTML += vm.resettodos;
 
 </script>
