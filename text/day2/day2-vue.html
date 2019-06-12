@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue-demo</title>
+</head>
+<script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+
+<body>
+    <div id="app"></div>
+</body>
+
+</html>
+<!-- <script src="./js/day2-vue.js"></script> -->
+<script>
+
+    import first from './js/first';
+
+    var vm = new Vue({
+        el: '#app',
+        data: { message: 'helloword' },
+        components: { first }
+    });
+
+</script>

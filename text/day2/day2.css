@@ -1,0 +1,68 @@
+@charset "utf-8";
+
+.listnone li {
+    list-style-type: none;
+}
+
+/* .listnone li:nth-of-type(1) {
+            cursor: default;
+            background-color: #4e3131
+        }
+
+        .listnone li:nth-of-type(2) {
+            cursor: hand;
+            background-color: #5a7dc9
+        }
+
+        .listnone li:nth-of-type(3) {
+            cursor: move;
+            background-color: #32bdc2
+        }
+
+        .listnone li:nth-of-type(4) {
+            cursor: pointer;
+            background-color: #a72b5e
+        }
+
+        .listnone li:nth-of-type(5) {
+            cursor: url("https://static.runoob.com/images/favicon.ico");
+        } */
+.listnone :nth-of-type(1) {
+    cursor: default;
+    background-color: #4e3131
+}
+
+.listnone :nth-of-type(2) {
+    cursor: hand;
+    background-color: #2a63b9
+}
+
+.listnone :nth-of-type(3) {
+    cursor: text;
+    background-color: #133c79
+}
+
+.listnone :nth-of-type(4) {
+    cursor: move;
+    background-color: #010813
+}
+
+.listnone :nth-of-type(5) {
+    cursor: pointer;
+    background-color: #aa1b6e
+}
+
+.listnone :nth-of-type(6) {
+    cursor: pointer;
+    background-color: #09d486
+}
+
+.listnone :nth-of-type(7) {
+    cursor: pointer;
+    background-color: #36ce87
+}
+
+.listnone :nth-of-type(8) {
+    cursor: pointer;
+    background-color: #abe443
+}

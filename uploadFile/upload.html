@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=100%, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>
+
+    <input type="file" id="inputBox">
+    <div id='showText'></div>
+  </div>
+</body>
+<script>
+  var inputBox = document.getElementById("inputBox");
+  var showText = document.getElementById("showText");
+  inputBox.addEventListener("change", function () { 
+    var reader = new FileReader();
+    reader.readAsText(inputBox.files[0], "utf-8"); //发起异步请求
+    reader.onload = function (e) {
+      var flie = inputBox.files[0]; 
+      // console.log( e.target.result); 
+      console.log(22222,inputBox.files );
+      console.log(200000,inputBox.files[0] );
+      function getObjectURL(filex) {
+        var url = null;
+        if (window.createObjcectURL != undefined) {
+          url = window.createOjcectURL(filex);
+        } else if (window.URL != undefined) {
+          url = window.URL.createObjectURL(filex);
+        } else if (window.webkitURL != undefined) {
+          url = window.webkitURL.createObjectURL(filex);
+        }
+        return url;
+      }
+      var objURL = getObjectURL(flie);//这里的objURL就是input file的真实路径 
+      console.log(objURL);
+    }
+    
+  })
+
+
+
+
+
+
+
+
+
+
+  // var file = this.$refs.uploadChange.flies;
+  //     var reader = new FileReader();
+  //     var imgFile='';
+  //     reader.onload =function(e) {
+  //       alert('读取完成')
+  //       imgFile =e.target.result;
+  //       console.log('imgFile',imgFile);
+
+  //     }
+  //     reader.readAsDataURL(file)
+  //     // this.$refs.uploadChange.change = function() {
+  //     //   var filePath = this.$refs.uploadChange.value;
+  //     //   // alert(filePath);
+  //     //   if (filePath.indexOf("jpg") != -1 || filePath.indexOf("png") != -1) {
+  //     //     var arr = filePath.split("\\");
+  //     //     var fileName = arr[arr.length - 1];
+  //     //   } else {
+  //     //     this.$refs.fileerrorTi.html =
+  //     //       "非jpg,png格式：您未上传文件，或者您上传文件类型有误！";
+
+  //     //     return false;
+  //     //   }
+  //     // };
+  //   }
+</script>
+
+</html>
