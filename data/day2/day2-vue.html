@@ -16,21 +16,43 @@
         else
         <!-- <div v-if="b">{{a}}</div> -->
         <div v-show="inputValue">{{inputValue}}</div>
+
         <div>v-model input</div>
         <input v-model="message" type="text" style="width:20%" />
+
         <div>v-bind input</div>
         <input v-bind:value="inputValue" type="text" style="width:20%" />
 
+        <div>v-bind 缩写 input</div>
+        <input :value="inputValue" type="text" style="width:20%" /> <br>
+        <input :value="todos[0].text" type="text" style="width:20%" />
+
+        <div>v-bind 反转字符 </div>
+        <input type="text" :value="reverseMessage()" style="width:20%" />
+
+        <div>v-text 反转字符 </div>
+        <span type="text" v-text="reverseMessage()" style="width:20%"></span>
+
+        <div> v-html 解析html </div>
+        <div v-html="showHtml" style="width:20%"></div>
+
+        <div>v-on 绑定事件 </div>
+        <button type="text" v-on:click="reverseText()" style="width:20%">{{ text }}</button>
+
+        <div>v-on 绑定事件 简写 </div>
+        <button type="text" @click="reverseText" style="width:20%">{{ text }}</button>
+
+        <div> 绑定事件 简写 </div>
+        <button type="text" @click="changeMessage" style="width:20%">双向绑定的效果</button>
+
+        <div>v-for for循环 </div>
         <div v-for="to in todos">{{to.text}}</div>
     </div>
 </body>
 
 </html>
-<!-- <script src="./js/day2-vue.js"></script> -->
+<!-- <script src="./js/day2-vue.js"></script> 1713719600@qq.com -->
 <script>
-
-    // import first from './js/first';
-
     var vm = new Vue({
         el: '#app',
         data: {
@@ -42,16 +64,27 @@
                 { text: '整个牛项目' }
             ],
             resettodos: '',
-            inputValue: '22'
+            inputValue: '1122334455',
+            text: '1122334455',
+            showHtml: ''
         },
         created: function () {
-            // `this` 指向 vm 实例
-            // console.log('a is: ' + this.a)
             this.todos.map(es => {
-                this.resettodos += es.text + '+=+'
+                this.resettodos += es.text + '+=+';
+                this.showHtml += `<div> ${es.text}</div >`;
             })
+        },
+        methods: {
+            reverseMessage: function () {
+                return this.inputValue.split('').reverse().join('')
+            },
+            reverseText: function () {
+                this.text = this.text.split('').reverse().join('');
+            },
+            changeMessage: function () {
+                this.message = new Date().toLocaleString();
+            }
         }
     })
-    // document.getElementById('app').innerHTML += vm.resettodos;
-
+// document.getElementById('app').innerHTML += vm.resettodos;
 </script>
