@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>写入 数据</title>
+</head>
+
+<body>
+    <div id="showData"></div>
+</body>
+
+</html>
+<script>
+    var data = [
+        " 使用 window.alert() 弹出警告框。",
+        " 使用 document.write() 方法将内容写到 HTML 文档中。",
+        " 使用 innerHTML 写入到 HTML 元素。",
+        "使用 console.log() 写入到浏览器的控制台。"
+    ]
+
+    var showHTML = '';
+    for (var i = 0; i < data.length; i++) {
+        showHTML += '<div>' + data[i] + '</div>';
+    }
+    document.getElementById('showData').innerHTML = showHTML;
+</script>
